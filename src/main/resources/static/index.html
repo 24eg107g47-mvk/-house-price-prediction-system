@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>House Price Predictor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <h1>House Price Predictor</h1>
+    <p>Estimate a property's price from its features</p>
+</header>
+
+<main>
+    <section class="card">
+        <h2>Property details</h2>
+        <form id="predict-form" novalidate>
+            <label>Location
+                <input type="text" id="location" list="cities" placeholder="e.g. Hyderabad" required>
+                <datalist id="cities">
+                    <option value="Hyderabad"><option value="Bangalore"><option value="Mumbai">
+                    <option value="Delhi"><option value="Chennai"><option value="Pune"><option value="Kolkata">
+                </datalist>
+            </label>
+            <label>Built-up area (sq.ft)
+                <input type="number" id="area" min="1" step="any" placeholder="e.g. 1200" required>
+            </label>
+            <div class="row">
+                <label>Bedrooms
+                    <input type="number" id="bedrooms" min="1" max="10" value="2" required>
+                </label>
+                <label>Bathrooms
+                    <input type="number" id="bathrooms" min="1" max="10" value="2" required>
+                </label>
+            </div>
+            <label class="check">
+                <input type="checkbox" id="parking"> Parking available
+            </label>
+            <button type="submit">Estimate price</button>
+        </form>
+        <div id="error" class="error" hidden></div>
+        <div id="result" class="result" hidden>
+            <span>Estimated price</span>
+            <strong id="price"></strong>
+        </div>
+    </section>
+
+    <section class="card">
+        <div class="history-head">
+            <h2>Previous predictions</h2>
+            <button id="clear" class="secondary" type="button">Clear</button>
+        </div>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                <tr>
+                    <th>Date</th><th>Location</th><th>Area</th><th>Bed</th><th>Bath</th><th>Parking</th><th>Price</th>
+                </tr>
+                </thead>
+                <tbody id="history"></tbody>
+            </table>
+        </div>
+        <p id="empty" class="muted">No predictions yet.</p>
+    </section>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
